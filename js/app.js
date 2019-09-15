@@ -1,36 +1,24 @@
+// App logic.
+window.myApp = {};
+
 document.addEventListener('init', function(event) {
-    var page = event.target;
-    console.log(page.id);
+  var page = event.target;
 
-    if(page.id === 'tabbar'){
-        //Code for tabbar
-        $("#menubtn").click(function(){
-          var menu = document.getElementById('menubtn');
-        menu.open();  
-        })
-        
-    }
+  // Each page calls its own initialization controller.
+  if (myApp.controllers.hasOwnProperty(page.id)) {
+    myApp.controllers[page.id](page);
+  }
 
-    if(page.id === "sidemenu"){
-        //Code for side menu
-        $('#homebtn').click(function(){
-            var content = document.getElementById('content');
-            var menu = document.getElementById('menu');
-            content.load('tabbar.html')
-                .then(menu.close.bind(menu));
-    }) 
-    $('#loginbtn').click(function(){
-        var content = document.getElementById('content');
-        var menu = document.getElementById('menu');
-        content.load('login.html')
-            .then(menu.close.bind(menu));
-})
+  // Fill the lists with initial data when the pages we need are ready.
+  // This only happens once at the beginning of the app.
+  if (page.id === 'menuPage' || page.id === 'pendingTasksPage') {
+    if (document.querySelector('#menuPage')
+      && document.querySelector('#pendingTasksPage')
+      && !document.querySelector('#pendingTasksPage ons-list-item')
+    ) {
+      myApp.services.fixtures.forEach(function(data) {
+        myApp.services.tasks.create(data);
+      });
     }
-
-    if(page.id === 'tab1'){
-      $('#btn1').click(function(){
-        ons.notification.alert("Hello");
-    })  
-    }
-    
+  }
 });
