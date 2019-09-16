@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +14,31 @@
 
   <title>Tiger Food</title>
 </head>
-<body>
-    <ons-page>
-        <p style="text-align: center; margin-top: 10px;">
-          <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)">
-          </ons-search-input>
 
-        </p>
-      </ons-page>
-  
+<body>
+  <ons-page>
+    
+    <ons-toolbar>
+      <div class="center">
+        <img src="https://static.thenounproject.com/png/4459-200.png" alt="" width="25px">
+        TIGER FOOD
+      </div>
+    </ons-toolbar>
+
+    <ons-tabbar style="background-color:yellow" swipeable position="auto">
+      <ons-tab page="home.html" label="" icon="fa-home, material:md-home" active>
+      </ons-tab>
+      <ons-tab page="tab2.html" label="" icon="fa-compass, material:md-home" >
+      </ons-tab>
+      <ons-tab page="tab2.html" label="" icon="fa-store, material:md-home" >
+      </ons-tab>
+      <ons-tab page="tab2.html" label="" icon="fa-user-circle, material:md-home" >
+      </ons-tab>
+    </ons-tabbar>
+  </ons-page>
+
+
+
 </body>
+
 </html>
