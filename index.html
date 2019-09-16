@@ -11,11 +11,13 @@
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/search.js"></script>
+  <script src="js/index.js"></script>
 
   <title>Tiger Food</title>
 </head>
 
 <body>
+  <ons-navigator id="myNavigator" page="index.html"></ons-navigator>
   <ons-page>
     <ons-toolbar>
       <div class="center">
@@ -27,12 +29,12 @@
     </ons-toolbar>
 
 
-    <ons-tabbar swipeable position="auto">
+    <ons-tabbar swipeable position="auto" style="color:black">
       <ons-tab page="home.html" label="" icon="fa-home, material:md-home" active>
       </ons-tab>
-      <ons-tab page="tab2.html" label="" icon="fa-compass, material:md-compass">
+      <ons-tab page="location.html" label="" icon="fa-compass, material:md-compass">
       </ons-tab>
-      <ons-tab page="" label="" icon="fa-store, material:md-store">
+      <ons-tab page="order.html" label="" icon="fa-store, material:md-store">
       </ons-tab>
       <ons-tab page="information.html" label="" icon="fa-user-circle, material:md-user">
       </ons-tab>

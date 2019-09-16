@@ -1,4 +1,3 @@
-// App logic.
 window.myApp = {};
 
 document.addEventListener('init', function(event) {
@@ -23,3 +22,5 @@ document.addEventListener('init', function(event) {
   }
   
 });
+
+

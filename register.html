@@ -19,18 +19,28 @@
     <ons-navigator id="myNavigator" page="login.html"></ons-navigator>
     <ons-page id="login">
         <ons-toolbar style="background-color: black">
-            <div class="center" style="color:yellow"> Login </div>
+            <div class="center" style="color:yellow"> Register </div>
             <div class="left">
                 <ons-toolbar-button style="color: yellow">
                     <ons-icon icon="fa-angle-left"></ons-icon>
                 </ons-toolbar-button>
             </div>
         </ons-toolbar>
-
-        <div style="margin-top: 150px; width: 100%;">
+        <p style="text-align: left">
+            Please fill in a details below
+        </p>
+        <div style="margin-top: 50px; width: 100%;">
 
             <p>
-                <ons-input style="width: 100%" id="username" modifier="underbar" placeholder="Username" float>
+                <ons-input style="width: 100%" id="username" modifier="underbar" placeholder="Full Name" float>
+                </ons-input>
+            </p>
+            <p>
+                <ons-input style="width: 100%" id="email" modifier="underbar" type="email" placeholder="Email" float>
+                </ons-input>
+            </p>
+            <p>
+                <ons-input style="width: 100%" id="phone" modifier="underbar" type="phone" placeholder="Phone number" float>
                 </ons-input>
             </p>
             <p>
@@ -38,12 +48,17 @@
                     float>
                 </ons-input>
             </p>
-            <ons-button style="width: 100%; color:white; background-color: greenyellow ; text-align: center" onclick="openHome()">
+            <ons-button style="width: 100%; color:white; background-color: greenyellow ; text-align: center"
+                onclick="openHome()">
                 CONTINUE
             </ons-button>
         </div>
     </ons-page>
-   
+    <script>
+        function openHome() {
+            document.querySelector('#myNavigator').pushPage('index.html');
+        }
+    </script>
 </body>
 
 
