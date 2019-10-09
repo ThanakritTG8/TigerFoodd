@@ -19,10 +19,11 @@ var db = firebase.firestore();
 document.addEventListener('init', function (event) {
   var page = event.target;
 
+
   if (page.id === 'homePage') {
     console.log("homePage");
 
-    page.querySelector('#carousel').addEventListener("postchange", function() {
+    page.querySelector('#carousel').addEventListener("postchange", function () {
       page.querySelector('#dot0').classList.remove("circle_current");
       page.querySelector('#dot1').classList.remove("circle_current");
       page.querySelector('#dot2').classList.remove("circle_current");
@@ -44,13 +45,7 @@ document.addEventListener('init', function (event) {
       });
     });
 
-    $("#category").empty();
-    db.collection("category").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-
-        var category = ``
-      })
-    })
+    
 
   }
 

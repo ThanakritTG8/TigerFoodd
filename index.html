@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <title>TIGERFOOD</title>
 
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
   <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
   <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
   <link rel="stylesheet" href="lib/onsen/css/app.css">
@@ -42,15 +44,19 @@
           </div>
         </div>
       </ons-toolbar>
-      <ons-tabbar swipeable position="auto" style="color:black">
-        <ons-tab page="home.html" label="" icon="fa-home, material:md-home" active>
+      <ons-tabbar swipeable position="auto" style=" background-color:black; ">
+        <ons-tab page="home.html" label="" style=" background-color:black;" active>
+          <ons-icon icon="fa-home, material:md-home" style="color:#FFCC33;"></ons-icon>
         </ons-tab>
-        <!-- <ons-tab page="location.html" label="" icon="fa-compass, material:md-compass">
+        <ons-tab page="test.html" label="" style=" background-color:black;">
+          <ons-icon icon="fa-compass, material:md-compass" style="color:#FFCC33;"></ons-icon>
         </ons-tab>
-        <ons-tab page="order.html" label="" icon="fa-store, material:md-store">
+        <ons-tab page="home.html" label="" style=" background-color:black;">
+          <ons-icon icon="fa-store, material:md-store" style="color:#FFCC33;"></ons-icon>
         </ons-tab>
-        <ons-tab page="information.html" label="" icon="fa-user-circle, material:md-user">
-        </ons-tab> -->
+        <ons-tab page="test.html" label=""  style=" background-color:black;">
+          <ons-icon icon="fa-user-circle, material:md-user" style="color:#FFCC33;"></ons-icon>
+        </ons-tab>
       </ons-tabbar>
     </ons-page>
   </template>
@@ -65,6 +71,8 @@
 
   <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
+
+  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 
   <script src="js/app.js"></script>
 
