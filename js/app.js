@@ -30,14 +30,10 @@ document.addEventListener('init', function (event) {
       querySnapshot.forEach((doc) => {
 
         var item = `<ons-carousel-item modifier="nodivider" id="${doc.data().id}" class="recomended_item">
-        <div class="thumbnail" style="background-image: url('${doc.data().url}') ; width:100%">
+        <div class="thumnail">
+        <img src="${doc.data().url}" alt="" style="width:400px ; height:250px" >
         </div>
         </ons-carousel-item>`;
-
-        // var item = `<ons-carousel-item  id="${doc.data().id}">
-        // <img src="${doc.data().url}" alt="" style="width: 100%">
-        
-        // </ons-carousel-item>`;
 
         $("#carousel").append(item);
       });
