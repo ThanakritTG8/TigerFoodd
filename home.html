@@ -1,109 +1,115 @@
-<ons-page id="home">
+<ons-page id="homePage">
+    <!-- <ons-toolbar>
+        <div class="left"> -->
+    <!-- Toolbar-button with different icons depending on the platform. -->
+    <!-- <ons-toolbar-button id="menubtn">
+                <ons-icon icon="ion-navicon, material:md-menu" size="32px, material:24px"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">Food 247</div>
+        <div class="right">
+            <ons-toolbar-button>
+                <ons-icon icon="fa-user-circle"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar> -->
+    <ons-toolbar>
+        <div class="center">
+            <p style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+                <ons-search-input placeholder="Food or Restuarant">
+                </ons-search-input>
+            </p>
+        </div>
 
-  <p style="text-align: center; margin-top: 10px;">
-    <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)">
-    </ons-search-input>
-  </p>
+    </ons-toolbar>
 
-  <ons-carousel class="carousel" swipeable auto-scroll id="carousel" style="width: 100%">
-    <ons-carousel-item>
-      <img src="https://img.wongnai.com/p/1920x0/2019/01/29/ce6d5a1ade2948b684b012f707936c00.jpg" style="width: 100%">
-    </ons-carousel-item>
-    <ons-carousel-item>
-      <img src="https://gtravel.thfile.com/uppic/2017-08/03/0d500eb90.png" style="width: 100%">
-    </ons-carousel-item>
-    <ons-carousel-item>
-      <img src="http://www.thaifranchisecenter.com/document/sme/picture/201.jpg" style="width: 100%">
-    </ons-carousel-item>
-    
-  </ons-carousel>
-  
-  <ons-row>
-    <ons-col onclick="opendessert()">
-      <ons-card style="text-align: center ; width: 100%;" position="center">
-        <img src="http://www.sharp-weeclub.com/elctfl/article-images/atlimg_524.jpg" style="width: 100%">
-        <div class="title">
-          Thai Dessert
-        </div>
-      </ons-card>
-    </ons-col>
-    <ons-col>
-      <ons-card style="text-align: center ; width: 100%;" position="center">
-        <img src="https://thecryptonews24.com/wp-content/uploads/2019/02/Pearl-Milk-Tea-700x405.jpg" alt=""
-          style="width: 100%">
-        <div class="title">
-          Pearl Tea
-        </div>
-      </ons-card>
-    </ons-col>
-  </ons-row>
 
-  <ons-row>
-    <ons-col>
-      <ons-card style="text-align: center; width: 100%;">
-        <img
-          src="https://heatherchristo.com/wp-content/uploads/2014/01/Spicy-Thai-Curry-Soup-from-HeatherChristo.com_.jpg"
-          alt="" style="width: 100%">
-        <div class="title">
-          Noodle lover
-        </div>
-      </ons-card>
-    </ons-col>
+    <div class="content" style="text-align: center;">
+        <div class="recomended">
+            <ons-carousel auto-scroll auto-scroll-ratio="0.5" auto-refresh swipeable overscrollable
+                class="recomended_list" id="carousel">
+                <!-- <ons-carousel class="carousel" swipeable auto-scroll id="carousel" style="width: 100%">
+                 -->
 
-    <ons-col>
-      <ons-card style="text-align: center; width: 100%;">
-        <img
-          src="https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/07/14/Photos/Processed/iStockphoto-kqbD--621x414@LiveMint.jpg"
-          alt="" style="width: 100%">
-        <div class="title">
-          Fast Food
+            </ons-carousel>
         </div>
-      </ons-card>
-    </ons-col>
-  </ons-row>
-
-  <ons-row>
-    <ons-col>
-      <ons-card style="text-align: center; width: 100%;">
-        <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/36/30/e2/48-dimsum-place.jpg" alt=""
-          style="width: 100%">
-        <div class="title">
-          Dim Sum
-        </div>
-      </ons-card>
-    </ons-col>
-    <ons-col>
-      <ons-card style="text-align: center; width: 100%;">
-        <img src="https://ed.files-media.com/static-cache/resize-cache/790x528/ud/images/1/20/58961/LUM_4779_Cover.jpg"
-          alt="" style="width: 100%">
-        <div class="title">
-          Rice Steamed
-        </div>
-      </ons-card>
-    </ons-col>
-  </ons-row>
-
-  <ons-row>
-    <ons-col>
-      <ons-card style="text-align: center; width: 100%;">
-        <img
-          src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/15/16/china-coffee-cup.jpg?w968h681"
-          alt="" style="width: 100%">
-        <div class="title">
-          Coffee
-        </div>
-      </ons-card>
-    </ons-col>
-    <ons-col>
-      <ons-card style="text-align: center; width: 100%;">
-        <ons-button>
-          <img src="https://blog.takemetour.com/wp-content/uploads/2016/07/cooked-to-order-pad-ka-prao.jpg" alt=""
-            style="width: 100%">
-          <div class="title">
-            Cooked to Order
-          </div>
-        </ons-button>
-      </ons-card>
-    </ons-col>
-  </ons-row>
+        <!-- <div class="category_content">
+            <ons-row class="category">
+                <ons-col modifier="nodivider">
+                    <div class="category_wrapper" style="background-image: url('images/category1.png')">
+                        <figure class="category_thumbnail">
+                            <div class="category_title" id="Category_1_name">Thai</div>
+                        </figure>
+                    </div>
+                </ons-col>
+                <ons-col modifier="nodivider">
+                    <div class="category_wrapper" style="background-image: url('images/category2.png')">
+                        <figure class="category_thumbnail">
+                            <div class="category_title" id="Category_1_name">Isan</div>
+                        </figure>
+                    </div>
+                </ons-col>
+            </ons-row>
+            <ons-row class="category">
+                <ons-col modifier="nodivider">
+                    <div class="category_wrapper" style="background-image: url('images/category3.png')">
+                        <figure class="category_thumbnail">
+                            <div class="category_title" id="Category_1_name">South</div>
+                        </figure>
+                    </div>
+                </ons-col>
+                <ons-col modifier="nodivider">
+                    <div class="category_wrapper" style="background-image: url('images/category4.png')">
+                        <figure class="category_thumbnail">
+                            <div class="category_title" id="Category_1_name">North</div>
+                        </figure>
+                    </div>
+                </ons-col>
+            </ons-row>
+            <ons-row class="category">
+                <ons-col modifier="nodivider">
+                    <div class="category_wrapper" style="background-image: url('images/category5.png')">
+                        <figure class="category_thumbnail">
+                            <div class="category_title" id="Category_1_name">Spicy</div>
+                        </figure>
+                    </div>
+                </ons-col>
+                <ons-col modifier="nodivider">
+                    <div class="category_wrapper" style="background-image: url('images/category6.png')">
+                        <figure class="category_thumbnail">
+                            <div class="category_title" id="Category_1_name">Local</div>
+                        </figure>
+                    </div>
+                </ons-col>
+            </ons-row>
+        </div> -->
 </ons-page>
+<style type="text/css">
+    ons-page {
+        background-color: yellow;
+    }
+
+    .recomended_item {
+        width: 100%;
+        height: 150px;
+
+    }
+
+    .thumbnail {
+
+        padding-top: 150px;
+        padding-right: 150px;
+        padding-bottom: 150px;
+        padding-left: 150px;
+    }
+
+    .recomended_list {
+        height: 350px;
+    }
+
+    .recomended {
+        background-color: yellow;
+        padding-top: 20px;
+    }
+
+</style>
