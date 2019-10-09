@@ -9,6 +9,7 @@ var firebaseConfig = {
   appId: "1:1084753868707:web:a1abd0b24cada4e4394c16",
   measurementId: "G-BCXTW2P2C1"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
@@ -21,48 +22,57 @@ document.addEventListener('init', function (event) {
   if (page.id === 'homePage') {
     console.log("homePage");
 
-    $("#menubtn").click(function () {
-      $("#sidemenu")[0].open();
+    page.querySelector('#carousel').addEventListener("postchange", function() {
+      page.querySelector('#dot0').classList.remove("circle_current");
+      page.querySelector('#dot1').classList.remove("circle_current");
+      page.querySelector('#dot2').classList.remove("circle_current");
+      page.querySelector('#dot3').classList.remove("circle_current");
+      page.querySelector('#dot' + page.querySelector('#carousel').getActiveIndex()).classList.add("circle_current");
+
     });
+
 
     $("#slidemenu").empty();
     db.collection("slidemenu").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
-        var item = `<ons-carousel-item modifier="nodivider" id="${doc.data().id}" class="recomended_item">
-        <div class="thumnail">
+        var item = `<ons-carousel-item modifier="nodivider" id="${doc.data().id}" class="recomended_item">  
         <img src="${doc.data().url}" alt="" style="width:400px ; height:250px" >
-        </div>
         </ons-carousel-item>`;
 
         $("#carousel").append(item);
       });
     });
 
+    $("#category").empty();
+    db.collection("category").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
 
-
+        var category = ``
+      })
+    })
 
   }
 
-  if (page.id === 'menuPage') {
-    console.log("menuPage");
+  // if (page.id === 'menuPage') {
+  //   console.log("menuPage");
 
-    $("#login").click(function () {
-      $("#content")[0].load("login.html");
-      $("#sidemenu")[0].close();
-    });
+  //   $("#login").click(function () {
+  //     $("#content")[0].load("login.html");
+  //     $("#sidemenu")[0].close();
+  //   });
 
-    $("#home").click(function () {
-      $("#content")[0].load("home.html");
-      $("#sidemenu")[0].close();
-    });
-  }
+  //   $("#home").click(function () {
+  //     $("#content")[0].load("home.html");
+  //     $("#sidemenu")[0].close();
+  //   });
+  // }
 
-  if (page.id === 'loginPage') {
-    console.log("loginPage");
+  // if (page.id === 'loginPage') {
+  //   console.log("loginPage");
 
-    $("#backhomebtn").click(function () {
-      $("#content")[0].load("home.html");
-    });
-  }
+  //   $("#backhomebtn").click(function () {
+  //     $("#content")[0].load("home.html");
+  //   });
+  // }
 });

@@ -1,7 +1,7 @@
 <ons-page id="homePage">
 
     <ons-toolbar>
-        <div class="center" style="background-color: yellow">
+        <div class="center" style="background-color: #FFCC33">
             <p style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
                 <ons-search-input placeholder="Food or Restuarant">
                 </ons-search-input>
@@ -17,10 +17,26 @@
                 class="recomended_list" id="carousel">
                 <!-- <ons-carousel class="carousel" swipeable auto-scroll id="carousel" style="width: 100%">
                  -->
-
             </ons-carousel>
         </div>
-        <!-- <div class="category_content">
+        <div class="cover-label center">
+            <ul>
+                <li>
+                    <div id="dot0" class="circle circle_current">&#x25cf;</div>
+                </li>
+                <li>
+                    <div id="dot1" class="circle">&#x25cf;</div>
+                </li>
+                <li>
+                    <div id="dot2" class="circle">&#x25cf;</div>
+                </li>
+                <li>
+                    <div id="dot3" class="circle">&#x25cf;</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="category_content" id="category1">
             <ons-row class="category">
                 <ons-col modifier="nodivider">
                     <div class="category_wrapper" style="background-image: url('images/category1.png')">
@@ -69,34 +85,5 @@
                     </div>
                 </ons-col>
             </ons-row>
-        </div> -->
+        </div> 
 </ons-page>
-<style type="text/css">
-    ons-page {
-        background-color: yellow;
-    }
-
-    .recomended_item {
-        width: 100%;
-        height: 150px;
-
-    }
-
-    .thumbnail {
-
-        padding-top: 150px;
-        padding-right: 150px;
-        padding-bottom: 150px;
-        padding-left: 150px;
-    }
-
-    .recomended_list {
-        height: 350px;
-    }
-
-    .recomended {
-        background-color: yellow;
-        padding-top: 20px;
-    }
-
-</style>

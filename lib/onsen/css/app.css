@@ -1,8 +1,43 @@
 #mySplitter .page__background {
 
-    background-color: yellow;
+    background-color: #FFCC33;
+    /* #FFCC33 */
+}
+.recomended_item {
+    width: 100%;
+    height: 150px;
+
 }
 
-/* .thumbnail {
+.recomended_list {
+    height: 250px;
+}
 
-} */
+.recomended {
+
+    padding-top: 20px;
+}
+
+.cover-label {
+    text-align : center;
+    cursor : default;
+}
+ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    display: inline;
+    margin-right: 5px;
+  }
+
+  .circle {
+    font-size: 15px;
+    display: table-cell;
+    color: #999;
+   }
+
+  .circle_current {
+    color: white;
+  }
