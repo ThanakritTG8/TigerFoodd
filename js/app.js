@@ -44,9 +44,6 @@ document.addEventListener('init', function (event) {
         $("#carousel").append(item);
       });
     });
-
-    
-
   }
 
   // if (page.id === 'menuPage') {
