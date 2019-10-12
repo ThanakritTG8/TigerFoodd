@@ -23,6 +23,31 @@ document.addEventListener('init', function (event) {
   if (page.id === 'homePage') {
     console.log("homePage");
 
+    //homepage
+    $("#dessert").click(function () {
+      $("#content")[0].load("thaidessert.html"); 
+    });
+
+    $("#pearltea").click(function () {
+      $("#content")[0].load("pearltea.html");
+    });
+
+    $("#cookedtoOrder").click(function () {
+      $("#content")[0].load("cookedtoOrder.html");
+    });
+
+    $("#fastfood").click(function () {
+      $("#content")[0].load("fastfood.html");
+    });
+
+    $("#chickenrice").click(function () {
+      $("#content")[0].load("chickenrice.html");
+    });
+
+    $("#noodle").click(function () {
+      $("#content")[0].load("noodle.html");
+    });
+
     page.querySelector('#carousel').addEventListener("postchange", function () {
       page.querySelector('#dot0').classList.remove("circle_current");
       page.querySelector('#dot1').classList.remove("circle_current");
@@ -44,7 +69,11 @@ document.addEventListener('init', function (event) {
         $("#carousel").append(item);
       });
     });
+
+
   }
+
+
 
   // if (page.id === 'menuPage') {
   //   console.log("menuPage");
