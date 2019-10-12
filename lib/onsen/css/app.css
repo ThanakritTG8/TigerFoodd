@@ -89,4 +89,13 @@ ul {
     font-size: 20px;
     color:black;
   }
+  .toolbars{
+    background-color: #FFCC33;
+  }
+  .backbutton{
+    background-color: #FFCC33;
+  }
+  .chevleft{
+    color: black;
+  }
   
