@@ -73,6 +73,37 @@ document.addEventListener('init', function (event) {
 
   }
 
+  if(page.id === 'thaidessert'){
+    // $("#backbutton").click(function () {
+    //   $("#content").load("home.html"); 
+    // });
+
+    db.collection("restaurent").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        var dessert = `<ons-card class="restuarent">
+        <ons-row style="width:100%">
+            <div class="left" style="width:30%">
+                <img class="photorestuarent"
+                    src="${doc.data().resUrl}.jpg"
+                    alt="" id="${doc.data().resid}">
+            </div>
+            <div class="center" style="width:40%; margin-top:30px">
+                <a class="text">${doc.data().resname}</a>
+            </div>
+            <div class="right" style="width:30%; margin-top:30px">
+                <a class="rating">${doc.data().rating} <ons-icon icon="fa-star" class="starRating">
+                    </ons-icon>
+                </a>
+            </div>
+        </ons-row>
+    </ons-card>`;
+
+    $("#restaurent_recommended").append(dessert);
+
+      });
+    });
+  }
 
 
   // if (page.id === 'menuPage') {

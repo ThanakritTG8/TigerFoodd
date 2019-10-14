@@ -98,4 +98,18 @@ ul {
   .chevleft{
     color: black;
   }
-  
+  .restaurent{
+    width:100%;
+    
+  }
+  .photorestuarent{
+    width: 100%;
+    height: 2cm;
+  }
+  .text{
+    margin-left: 12px ;
+
+  }
+  .rating{
+    margin-left: 1cm;
+  }
