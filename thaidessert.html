@@ -7,64 +7,21 @@
             </ons-button>
         </div>
         <div class="center">
-            <div style="text-align: center; font-size: 30px; margin-top: 3px; margin-bottom: 3px;">
-                <img src="https://static.thenounproject.com/png/4459-200.png" alt="" width="25px">
-                TIGER FOOD
+            <div class="search">
+                <p style="text-align: center; margin-top: 10px;">
+                    <ons-search-input placeholder="Search"
+                        onchange="ons.notification.alert('Searched for: ' + this.value)">
+                    </ons-search-input>
+                </p>
             </div>
         </div>
+
     </ons-toolbar>
 
-    <div class="content">
-        <div class="search">
-            <p style="text-align: center; margin-top: 10px;">
-                <ons-search-input placeholder="Search" onchange="ons.notification.alert('Searched for: ' + this.value)">
-                </ons-search-input>
-            </p>
-        </div>
-
-        <div class="restaurent_recommended" id="restaurent_recommended">
-            <ons-card class="restuarent">
-                <ons-row style="width:100%">
-                    <div class="left" style="width:30%">
-                        <img class="photorestuarent"
-                            src="https://firebasestorage.googleapis.com/v0/b/tgfood-6eaae.appspot.com/o/restaurent%2Fdessert%2F%E0%B8%A7%E0%B8%A3%E0%B8%A3%E0%B8%93%E0%B8%B5.jpg?alt=media&token=aeeec5e2-7a82-4c7a-b316-d0142e6c6528"
-                            alt="">
-                    </div>
-                    <div class="center" style="width:40%; margin-top:30px">
-                        <a class="text">Loyal Thai Dessert</a>
-                    </div>
-                    <div class="right" style="width:30%; margin-top:30px">
-                        <a class="rating">3.5 <ons-icon icon="fa-star" class="starRating">
-                            </ons-icon>
-                        </a>
-                    </div>
-                </ons-row>
-            </ons-card>
-        </div>
 
 
-        <!-- <ons-card class="restuarent">
-        <img style="width: 100%" src="https://phuket.weserve.co.th/media/upload/store/29112018043638.jpg" alt="">
-        Krua Yai Duaong
-    </ons-card>
-    <ons-card class="restuarent">
-        <img style="width: 100%" src="http://ja.files-media.com/image/1/15/img_21811_m308T_460x460.jpg" alt="">
-        Wannee Dessert
-    </ons-card>
-    <ons-card class="restuarent">
-        <img style="width: 100%" src="https://img.wongnai.com/p/400x0/2019/04/03/dc63af281c4546d3bc44a520c09fd666.jpg"
-            alt="">
-        Lor-Rong
-    </ons-card>
-    <ons-card class="restuarent">
-        <img style="width: 100%" src="https://img.wongnai.com/p/400x0/2019/04/03/dc63af281c4546d3bc44a520c09fd666.jpg"
-            alt="">
-        Lor-Rong
-    </ons-card>
-    <ons-card class="restuarent">
-        <img style="width: 100%" src="https://img.wongnai.com/p/400x0/2019/04/03/dc63af281c4546d3bc44a520c09fd666.jpg"
-            alt="">
-        Lor-Rong
-    </ons-card> -->
+    <div class="content" id="restaurent_recommended">
+
     </div>
+
 </ons-page>

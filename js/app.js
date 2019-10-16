@@ -25,7 +25,7 @@ document.addEventListener('init', function (event) {
 
     //homepage
     $("#dessert").click(function () {
-      $("#content")[0].load("thaidessert.html"); 
+      $("#content")[0].load("thaidessert.html");
     });
 
     $("#pearltea").click(function () {
@@ -73,36 +73,191 @@ document.addEventListener('init', function (event) {
 
   }
 
-  if(page.id === 'thaidessert'){
-    // $("#backbutton").click(function () {
-    //   $("#content").load("home.html"); 
-    // });
+
+  if (page.id === 'thaidessert') {
+
+    $("#restaurent_recommended").empty();
 
     db.collection("restaurent").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
-        var dessert = `<ons-card class="restuarent">
+        var item = `<ons-card class="restaurent">
         <ons-row style="width:100%">
             <div class="left" style="width:30%">
-                <img class="photorestuarent"
-                    src="${doc.data().resUrl}.jpg"
+                <img class="photorestaurent"
+                    src="${doc.data().resUrl}"
                     alt="" id="${doc.data().resid}">
             </div>
             <div class="center" style="width:40%; margin-top:30px">
                 <a class="text">${doc.data().resname}</a>
             </div>
             <div class="right" style="width:30%; margin-top:30px">
-                <a class="rating">${doc.data().rating} <ons-icon icon="fa-star" class="starRating">
+                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
                     </ons-icon>
                 </a>
             </div>
         </ons-row>
     </ons-card>`;
-
-    $("#restaurent_recommended").append(dessert);
-
+        $("#restaurent_recommended").append(item);
       });
     });
+
+
+  }
+
+  if (page.id === 'pearltea') {
+
+    $("#restaurent_recommended").empty();
+
+    db.collection("pearltea").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        var item = `<ons-card class="restaurent">
+        <ons-row style="width:100%">
+            <div class="left" style="width:30%">
+                <img class="photorestaurent"
+                    src="${doc.data().resUrl}"
+                    alt="" id="${doc.data().resid}">
+            </div>
+            <div class="center" style="width:40%; margin-top:30px">
+                <a class="text">${doc.data().resname}</a>
+            </div>
+            <div class="right" style="width:30%; margin-top:30px">
+                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
+                    </ons-icon>
+                </a>
+            </div>
+        </ons-row>
+    </ons-card>`;
+        $("#restaurent_recommended").append(item);
+      });
+    });
+
+
+  }
+
+  if (page.id === 'chickenrice') {
+
+    $("#restaurent_recommended").empty();
+
+    db.collection("chickenrice").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        var item = `<ons-card class="restaurent">
+        <ons-row style="width:100%">
+            <div class="left" style="width:30%">
+                <img class="photorestaurent"
+                    src="${doc.data().resUrl}"
+                    alt="" id="${doc.data().resid}">
+            </div>
+            <div class="center" style="width:40%; margin-top:30px">
+                <a class="text">${doc.data().resname}</a>
+            </div>
+            <div class="right" style="width:30%; margin-top:30px">
+                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
+                    </ons-icon>
+                </a>
+            </div>
+        </ons-row>
+    </ons-card>`;
+        $("#restaurent_recommended").append(item);
+      });
+    });
+
+
+  }
+
+  if (page.id === 'cookedtoOrder') {
+
+    $("#restaurent_recommended").empty();
+
+    db.collection("cookToOrder").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        var item = `<ons-card class="restaurent">
+        <ons-row style="width:100%">
+            <div class="left" style="width:30%">
+                <img class="photorestaurent"
+                    src="${doc.data().resUrl}"
+                    alt="" id="${doc.data().resid}">
+            </div>
+            <div class="center" style="width:40%; margin-top:30px">
+                <a class="text">${doc.data().resname}</a>
+            </div>
+            <div class="right" style="width:30%; margin-top:30px">
+                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
+                    </ons-icon>
+                </a>
+            </div>
+        </ons-row>
+    </ons-card>`;
+        $("#restaurent_recommended").append(item);
+      });
+    });
+
+
+  }
+
+  if (page.id === 'noodle') {
+
+    $("#restaurent_recommended").empty();
+
+    db.collection("noodle").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        var item = `<ons-card class="restaurent">
+        <ons-row style="width:100%">
+            <div class="left" style="width:30%">
+                <img class="photorestaurent"
+                    src="${doc.data().resUrl}"
+                    alt="" id="${doc.data().resid}">
+            </div>
+            <div class="center" style="width:40%; margin-top:30px">
+                <a class="text">${doc.data().resname}</a>
+            </div>
+            <div class="right" style="width:30%; margin-top:30px">
+                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
+                    </ons-icon>
+                </a>
+            </div>
+        </ons-row>
+    </ons-card>`;
+        $("#restaurent_recommended").append(item);
+      });
+    });
+
+
+  }
+
+  if (page.id === 'fastfood') {
+
+    $("#restaurent_recommended").empty();
+
+    db.collection("fastfood").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+
+        var item = `<ons-card class="restaurent">
+        <ons-row style="width:100%">
+            <div class="left" style="width:30%">
+                <img class="photorestaurent"
+                    src="${doc.data().resUrl}"
+                    alt="" id="${doc.data().resid}">
+            </div>
+            <div class="center" style="width:40%; margin-top:30px">
+                <a class="text">${doc.data().resname}</a>
+            </div>
+            <div class="right" style="width:30%; margin-top:30px">
+                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
+                    </ons-icon>
+                </a>
+            </div>
+        </ons-row>
+    </ons-card>`;
+        $("#restaurent_recommended").append(item);
+      });
+    });
+
+
   }
 
 
