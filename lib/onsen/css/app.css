@@ -4,6 +4,10 @@
     /* #FFCC33 */
 }
 
+#myNavigator .page__background{
+  background-color: #FFCC33;
+}
+
 .recomended_item {
     width: 100%;
     height: 150px;

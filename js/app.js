@@ -25,7 +25,7 @@ document.addEventListener('init', function (event) {
 
     //homepage
     $("#dessert").click(function () {
-      $("#content")[0].load("thaidessert.html");
+      $("#myNavigator")[0].pushPage("thaidessert.html");
     });
 
     $("#pearltea").click(function () {
@@ -75,6 +75,8 @@ document.addEventListener('init', function (event) {
 
 
   if (page.id === 'thaidessert') {
+
+
 
     $("#restaurent_recommended").empty();
 
