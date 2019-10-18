@@ -29,23 +29,23 @@ document.addEventListener('init', function (event) {
     });
 
     $("#pearltea").click(function () {
-      $("#content")[0].load("pearltea.html");
+      $("#myNavigator")[0].pushPage("pearltea.html");
     });
 
     $("#cookedtoOrder").click(function () {
-      $("#content")[0].load("cookedtoOrder.html");
+      $("#myNavigator")[0].pushPage("cookedtoOrder.html");
     });
 
     $("#fastfood").click(function () {
-      $("#content")[0].load("fastfood.html");
+      $("#myNavigator")[0].pushPage("fastfood.html");
     });
 
     $("#chickenrice").click(function () {
-      $("#content")[0].load("chickenrice.html");
+      $("#myNavigator")[0].pushPage("chickenrice.html");
     });
 
     $("#noodle").click(function () {
-      $("#content")[0].load("noodle.html");
+      $("#myNavigator")[0].pushPage("noodle.html");
     });
 
     page.querySelector('#carousel').addEventListener("postchange", function () {
