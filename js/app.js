@@ -75,12 +75,10 @@ document.addEventListener('init', function (event) {
 
 
   if (page.id === 'thaidessert') {
-
-
-
+    
     $("#restaurent_recommended").empty();
 
-    db.collection("restaurent").get().then((querySnapshot) => {
+    db.collection("restaurent").orderBy("resid", "asc").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
         var item = `<ons-card class="restaurent">
@@ -111,7 +109,7 @@ document.addEventListener('init', function (event) {
 
     $("#restaurent_recommended").empty();
 
-    db.collection("pearltea").get().then((querySnapshot) => {
+    db.collection("pearltea").orderBy("resid", "asc").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
         var item = `<ons-card class="restaurent">
@@ -142,7 +140,7 @@ document.addEventListener('init', function (event) {
 
     $("#restaurent_recommended").empty();
 
-    db.collection("chickenrice").get().then((querySnapshot) => {
+    db.collection("chickenrice").orderBy("resid", "asc").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
         var item = `<ons-card class="restaurent">
@@ -173,7 +171,7 @@ document.addEventListener('init', function (event) {
 
     $("#restaurent_recommended").empty();
 
-    db.collection("cookToOrder").get().then((querySnapshot) => {
+    db.collection("cookToOrder").orderBy("resid", "asc").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
         var item = `<ons-card class="restaurent">
@@ -204,7 +202,7 @@ document.addEventListener('init', function (event) {
 
     $("#restaurent_recommended").empty();
 
-    db.collection("noodle").get().then((querySnapshot) => {
+    db.collection("noodle").orderBy("resid", "asc").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
         var item = `<ons-card class="restaurent">
@@ -235,7 +233,7 @@ document.addEventListener('init', function (event) {
 
     $("#restaurent_recommended").empty();
 
-    db.collection("fastfood").get().then((querySnapshot) => {
+    db.collection("fastfood").orderBy("resid", "asc").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
         var item = `<ons-card class="restaurent">
@@ -263,25 +261,19 @@ document.addEventListener('init', function (event) {
   }
 
 
-  // if (page.id === 'menuPage') {
-  //   console.log("menuPage");
+  if (page.id === 'profilePage') {
+    console.log("profile");
 
-  //   $("#login").click(function () {
-  //     $("#content")[0].load("login.html");
-  //     $("#sidemenu")[0].close();
-  //   });
+    $("#logout").click(function () {
+      $("#content")[0].load("login.html");
+    });
+  }
 
-  //   $("#home").click(function () {
-  //     $("#content")[0].load("home.html");
-  //     $("#sidemenu")[0].close();
-  //   });
-  // }
+  if (page.id === 'loginPage') {
+    console.log("loginPage");
 
-  // if (page.id === 'loginPage') {
-  //   console.log("loginPage");
-
-  //   $("#backhomebtn").click(function () {
-  //     $("#content")[0].load("home.html");
-  //   });
-  // }
+    $("#backhomebtn").click(function () {
+      $("#content")[0].load("home.html");
+    });
+  }
 });
