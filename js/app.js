@@ -16,6 +16,16 @@ firebase.initializeApp(firebaseConfig);
 //Use firestore
 var db = firebase.firestore();
 
+function restaurent(id){
+  console.log(id);
+  var options = {
+    data: {
+      shopid: id
+    }
+  };
+  $("#myNavigator")[0].pushPage("restaurentMenu.html", options);
+}
+
 document.addEventListener('init', function (event) {
   var page = event.target;
 
@@ -89,7 +99,7 @@ document.addEventListener('init', function (event) {
     db.collection("restaurent").where("category", "==", category).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
-        var item = `<ons-card class="restaurent" id="restaurent">
+        var item = `<ons-card class="restaurent" onclick="restaurent();">
         <ons-row style="width:100%">
             <div class="left" style="width:30%">
                 <img class="photorestaurent"
@@ -107,9 +117,7 @@ document.addEventListener('init', function (event) {
         </ons-row>
     </ons-card>`;
         $("#restaurent_recommended").append(item);
-        $("#restaurent").click(function () {
-          $("#myNavigator")[0].pushPage("restaurentMenu.html");
-        });
+        
       });
 
     });
@@ -147,7 +155,7 @@ document.addEventListener('init', function (event) {
   if (page.id === 'loginPage') {
     console.log("loginPage");
         $(".signinbtn").click(function() {
-      var username = $("#email").val();
+      var username = $("#username").val();
       var password = $("#password").val();
 
       firebase
