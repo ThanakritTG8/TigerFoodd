@@ -25,28 +25,33 @@ document.addEventListener('init', function (event) {
 
     //homepage
     $("#dessert").click(function () {
-      localStorage.setItem("selectedCategory", "dessert")
+      localStorage.setItem("selectedCategory", "dessert");
       $("#myNavigator")[0].pushPage("category.html");
     });
 
     $("#pearltea").click(function () {
-      $("#myNavigator")[0].pushPage("pearltea.html");
+      localStorage.setItem("selectedCategory", "pearltea");
+      $("#myNavigator")[0].pushPage("category.html");
     });
 
     $("#cookedtoOrder").click(function () {
-      $("#myNavigator")[0].pushPage("cookedtoOrder.html");
+      localStorage.setItem("selectedCategory", "cookToOrder");
+      $("#myNavigator")[0].pushPage("category.html");
     });
 
     $("#fastfood").click(function () {
-      $("#myNavigator")[0].pushPage("fastfood.html");
+      localStorage.setItem("selectedCategory", "fastfood");
+      $("#myNavigator")[0].pushPage("category.html");
     });
 
     $("#chickenrice").click(function () {
-      $("#myNavigator")[0].pushPage("chickenrice.html");
+      localStorage.setItem("selectedCategory", "chickenrice");
+      $("#myNavigator")[0].pushPage("category.html");
     });
 
     $("#noodle").click(function () {
-      $("#myNavigator")[0].pushPage("noodle.html");
+      localStorage.setItem("selectedCategory", "noodle");
+      $("#myNavigator")[0].pushPage("category.html");
     });
 
     page.querySelector('#carousel').addEventListener("postchange", function () {
@@ -108,162 +113,6 @@ document.addEventListener('init', function (event) {
     });
 
   }
-
-  if (page.id === 'pearltea') {
-
-    $("#restaurent_recommended").empty();
-
-    db.collection("pearltea").orderBy("resid", "asc").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-
-        var item = `<ons-card class="restaurent">
-        <ons-row style="width:100%">
-            <div class="left" style="width:30%">
-                <img class="photorestaurent"
-                    src="${doc.data().resUrl}"
-                    alt="" id="${doc.data().resid}">
-            </div>
-            <div class="center" style="width:40%; margin-top:30px">
-                <a class="text">${doc.data().resname}</a>
-            </div>
-            <div class="right" style="width:30%; margin-top:30px">
-                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
-                    </ons-icon>
-                </a>
-            </div>
-        </ons-row>
-    </ons-card>`;
-        $("#restaurent_recommended").append(item);
-      });
-    });
-
-
-  }
-
-  if (page.id === 'chickenrice') {
-
-    $("#restaurent_recommended").empty();
-
-    db.collection("chickenrice").orderBy("resid", "asc").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-
-        var item = `<ons-card class="restaurent">
-        <ons-row style="width:100%">
-            <div class="left" style="width:30%">
-                <img class="photorestaurent"
-                    src="${doc.data().resUrl}"
-                    alt="" id="${doc.data().resid}">
-            </div>
-            <div class="center" style="width:40%; margin-top:30px">
-                <a class="text">${doc.data().resname}</a>
-            </div>
-            <div class="right" style="width:30%; margin-top:30px">
-                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
-                    </ons-icon>
-                </a>
-            </div>
-        </ons-row>
-    </ons-card>`;
-        $("#restaurent_recommended").append(item);
-      });
-    });
-
-
-  }
-
-  if (page.id === 'cookedtoOrder') {
-
-    $("#restaurent_recommended").empty();
-
-    db.collection("cookToOrder").orderBy("resid", "asc").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-
-        var item = `<ons-card class="restaurent">
-        <ons-row style="width:100%">
-            <div class="left" style="width:30%">
-                <img class="photorestaurent"
-                    src="${doc.data().resUrl}"
-                    alt="" id="${doc.data().resid}">
-            </div>
-            <div class="center" style="width:40%; margin-top:30px">
-                <a class="text">${doc.data().resname}</a>
-            </div>
-            <div class="right" style="width:30%; margin-top:30px">
-                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
-                    </ons-icon>
-                </a>
-            </div>
-        </ons-row>
-    </ons-card>`;
-        $("#restaurent_recommended").append(item);
-      });
-    });
-
-
-  }
-
-  if (page.id === 'noodle') {
-
-    $("#restaurent_recommended").empty();
-
-    db.collection("noodle").orderBy("resid", "asc").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-
-        var item = `<ons-card class="restaurent">
-        <ons-row style="width:100%">
-            <div class="left" style="width:30%">
-                <img class="photorestaurent"
-                    src="${doc.data().resUrl}"
-                    alt="" id="${doc.data().resid}">
-            </div>
-            <div class="center" style="width:40%; margin-top:30px">
-                <a class="text">${doc.data().resname}</a>
-            </div>
-            <div class="right" style="width:30%; margin-top:30px">
-                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
-                    </ons-icon>
-                </a>
-            </div>
-        </ons-row>
-    </ons-card>`;
-        $("#restaurent_recommended").append(item);
-      });
-    });
-
-
-  }
-
-  if (page.id === 'fastfood') {
-
-    $("#restaurent_recommended").empty();
-
-    db.collection("fastfood").orderBy("resid", "asc").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-
-        var item = `<ons-card class="restaurent">
-        <ons-row style="width:100%">
-            <div class="left" style="width:30%">
-                <img class="photorestaurent"
-                    src="${doc.data().resUrl}"
-                    alt="" id="${doc.data().resid}">
-            </div>
-            <div class="center" style="width:40%; margin-top:30px">
-                <a class="text">${doc.data().resname}</a>
-            </div>
-            <div class="right" style="width:30%; margin-top:30px">
-                <a class="rating">${doc.data().rating}<ons-icon icon="fa-star" class="starRating">
-                    </ons-icon>
-                </a>
-            </div>
-        </ons-row>
-    </ons-card>`;
-        $("#restaurent_recommended").append(item);
-      });
-    });
-
-
-  }
-
 
   if (page.id === 'profilePage') {
     console.log("profile");
