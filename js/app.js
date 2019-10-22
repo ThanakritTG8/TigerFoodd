@@ -25,7 +25,8 @@ document.addEventListener('init', function (event) {
 
     //homepage
     $("#dessert").click(function () {
-      $("#myNavigator")[0].pushPage("thaidessert.html");
+      localStorage.setItem("selectedCategory", "dessert")
+      $("#myNavigator")[0].pushPage("category.html");
     });
 
     $("#pearltea").click(function () {
@@ -74,14 +75,14 @@ document.addEventListener('init', function (event) {
   }
 
 
-  if (page.id === 'thaidessert') {
+  if (page.id === 'categoryPage') {
     
     $("#restaurent_recommended").empty();
-
-    db.collection("restaurent").orderBy("resid", "asc").get().then((querySnapshot) => {
+    var category = localStorage.getItem("selectedCategory");
+    db.collection("restaurent").where("category", "==", category).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
-        var item = `<ons-card class="restaurent">
+        var item = `<ons-card class="restaurent" id="restaurent">
         <ons-row style="width:100%">
             <div class="left" style="width:30%">
                 <img class="photorestaurent"
@@ -102,6 +103,9 @@ document.addEventListener('init', function (event) {
       });
     });
 
+    $("#restaurent").click(function(){
+      $("#content")[0].load("restaurentMenu.html");
+    });
 
   }
 
@@ -264,7 +268,7 @@ document.addEventListener('init', function (event) {
   if (page.id === 'profilePage') {
     console.log("profile");
 
-    $("#logout").click(function () {
+    $("#logout1").click(function () {
       $("#content")[0].load("login.html");
     });
   }
