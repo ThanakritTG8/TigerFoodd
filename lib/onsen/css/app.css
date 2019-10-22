@@ -117,3 +117,15 @@ ul {
   .rating{
     margin-left: 1cm;
   }
+  .resdetail{
+    width: 100%;
+  }
+  .resname{
+    width: 50%;
+  }
+  .opentime{
+    width: 50%;
+  }
+  .resrating{
+    width: 40%;
+  }

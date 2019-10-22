@@ -81,6 +81,8 @@ document.addEventListener('init', function (event) {
 
 
   if (page.id === 'categoryPage') {
+    console.log();
+    
 
     $("#restaurent_recommended").empty();
     var category = localStorage.getItem("selectedCategory");
@@ -105,34 +107,104 @@ document.addEventListener('init', function (event) {
         </ons-row>
     </ons-card>`;
         $("#restaurent_recommended").append(item);
-
-      });
-      
         $("#restaurent").click(function () {
-        $("#myNavigator")[0].pushPage("restaurentMenu.html");
+          $("#myNavigator")[0].pushPage("restaurentMenu.html");
+        });
       });
 
     });
-
   }
 
-  if(page.id === 'listmenu'){
-   
+  if (page.id === 'listmenu') {
+    $("#menu").empty();
+    db.collection("restaurent").where("resid", "==", resid).get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        var item = `<ons-card class="resdetail">
+        <p class="resname">ขนมหวานยายย้อย</p>
+        <p class="resrating">3.5 <ons-icon icon="fa-star"></ons-icon></p>
+        <p class="opentime">เปิด 24.00-23.59</p>
+</ons-card>
+<ons-card class="list">
+    <div class="left" style="width:50%">
+       <a class="listmenu">ขนมครก</a> 
+    </div>
+    <div class="right" style="width: 50%;">
+       <a class="price">10฿</a> 
+    </div>
+</ons-card>`
+      });
+    });
   }
 
   if (page.id === 'profilePage') {
     console.log("profile");
 
-    $("#logout1").click(function () {
+    $(".logout1").click(function () {
       $("#content")[0].load("login.html");
     });
   }
 
   if (page.id === 'loginPage') {
     console.log("loginPage");
+        $(".signinbtn").click(function() {
+      var username = $("#email").val();
+      var password = $("#password").val();
+
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(username, password)
+        .then(function() {
+          content.load("Resturant_manu.html");
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+          console.log("errorCode :" + errorCode);
+          console.log("errorMessage:" + errorMessage);
+          ons.notification.alert("Incorrect Email or Password");
+        });
+    });
+
+    $("#back_home").click(function() {
+      $("#content")[0].load("Resturant_manu.html");
+    });
+
+   
+    $("#gmail-button").click(function() {
+      var provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(function(result) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          var token = result.credential.accessToken;
+          // The signed-in user info.
+          var user = result.user;
+          // ...
+        })
+        .then(function() {
+          $("#content")[0].load("Resturant_manu.html");
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // The email of the user's account used.
+          var email = error.email;
+          // The firebase.auth.AuthCredential type that was used.
+          var credential = error.credential;
+          // ...
+        });
+    });
+    
 
     $("#backhomebtn").click(function () {
       $("#content")[0].load("home.html");
     });
   }
 });
+
+  
