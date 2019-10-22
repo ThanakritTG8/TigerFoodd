@@ -81,7 +81,7 @@ document.addEventListener('init', function (event) {
 
 
   if (page.id === 'categoryPage') {
-    
+
     $("#restaurent_recommended").empty();
     var category = localStorage.getItem("selectedCategory");
     db.collection("restaurent").where("category", "==", category).get().then((querySnapshot) => {
@@ -105,13 +105,19 @@ document.addEventListener('init', function (event) {
         </ons-row>
     </ons-card>`;
         $("#restaurent_recommended").append(item);
+
       });
+      
+        $("#restaurent").click(function () {
+        $("#myNavigator")[0].pushPage("restaurentMenu.html");
+      });
+
     });
 
-    $("#restaurent").click(function(){
-      $("#content")[0].load("restaurentMenu.html");
-    });
+  }
 
+  if(page.id === 'listmenu'){
+   
   }
 
   if (page.id === 'profilePage') {

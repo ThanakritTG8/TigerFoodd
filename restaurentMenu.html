@@ -1,3 +1,24 @@
-<ons-page>
-    ร้านนะ
+<ons-page id="listmenu">
+    <ons-toolbar class="toolbars">
+        <div class="left">
+            <ons-back-button></ons-back-button>
+        </div>
+        <div class="center">
+            <div class="search">
+                <p style="text-align: center; margin-top: 10px;">
+                    <ons-search-input placeholder="Search"
+                        onchange="ons.notification.alert('Searched for: ' + this.value)">
+                    </ons-search-input>
+                </p>
+            </div>
+        </div>
+    </ons-toolbar>
+
+    <div class="content" id="menu">
+        <ons-card class="resdetail">
+            <div class="left">
+                <a class="resname">ขนมหวานยายย้อย</a>
+            </div>
+        </ons-card>
+    </div>
 </ons-page>
