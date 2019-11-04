@@ -1,29 +1,23 @@
-// Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyDWxIv_Yc22Fc0UJApkZqjnbmV-qiqbbPY",
   authDomain: "tgfood-6eaae.firebaseapp.com",
   databaseURL: "https://tgfood-6eaae.firebaseio.com",
   projectId: "tgfood-6eaae",
-  storageBucket: "",
+  storageBucket: "tgfood-6eaae.appspot.com",
   messagingSenderId: "1084753868707",
   appId: "1:1084753868707:web:a1abd0b24cada4e4394c16",
   measurementId: "G-BCXTW2P2C1"
 };
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
 
 //Use firestore
 var db = firebase.firestore();
 
-function restaurent(id){
-  console.log(id);
-  var options = {
-    data: {
-      shopid: id
-    }
-  };
-  $("#myNavigator")[0].pushPage("restaurentMenu.html", options);
+function restaurent(id) {
+  localStorage.setItem("selectedrestaurent", id);
+  $("#myNavigator")[0].pushPage("restaurentMenu.html");
 }
 
 document.addEventListener('init', function (event) {
@@ -92,14 +86,14 @@ document.addEventListener('init', function (event) {
 
   if (page.id === 'categoryPage') {
     console.log();
-    
+
 
     $("#restaurent_recommended").empty();
     var category = localStorage.getItem("selectedCategory");
     db.collection("restaurent").where("category", "==", category).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
 
-        var item = `<ons-card class="restaurent" onclick="restaurent();">
+        var item = `<ons-card class="restaurent" onclick="restaurent('${doc.data().resid}');">
         <ons-row style="width:100%">
             <div class="left" style="width:30%">
                 <img class="photorestaurent"
@@ -117,7 +111,7 @@ document.addEventListener('init', function (event) {
         </ons-row>
     </ons-card>`;
         $("#restaurent_recommended").append(item);
-        
+
       });
 
     });
@@ -125,11 +119,12 @@ document.addEventListener('init', function (event) {
 
   if (page.id === 'listmenu') {
     $("#menu").empty();
+    var resid = localStorage.getItem("selectedrestaurent");
     db.collection("restaurent").where("resid", "==", resid).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         var item = `<ons-card class="resdetail">
-        <p class="resname">ขนมหวานยายย้อย</p>
-        <p class="resrating">3.5 <ons-icon icon="fa-star"></ons-icon></p>
+        <p class="resname">${doc.data().resname}</p>
+      <p class="resrating">${doc.data().rating}<ons-icon icon="fa-star"></ons-icon></p>
         <p class="opentime">เปิด 24.00-23.59</p>
 </ons-card>
 <ons-card class="list">
@@ -139,7 +134,9 @@ document.addEventListener('init', function (event) {
     <div class="right" style="width: 50%;">
        <a class="price">10฿</a> 
     </div>
-</ons-card>`
+</ons-card>`;
+
+        $("#menu").append(item);
       });
     });
   }
@@ -154,17 +151,17 @@ document.addEventListener('init', function (event) {
 
   if (page.id === 'loginPage') {
     console.log("loginPage");
-        $(".signinbtn").click(function() {
+    $(".signinbtn").click(function () {
       var username = $("#username").val();
       var password = $("#password").val();
 
       firebase
         .auth()
         .signInWithEmailAndPassword(username, password)
-        .then(function() {
+        .then(function () {
           content.load("Resturant_manu.html");
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
@@ -175,28 +172,28 @@ document.addEventListener('init', function (event) {
         });
     });
 
-    $("#back_home").click(function() {
+    $("#back_home").click(function () {
       $("#content")[0].load("Resturant_manu.html");
     });
 
-   
-    $("#gmail-button").click(function() {
+
+    $("#gmail-button").click(function () {
       var provider = new firebase.auth.GoogleAuthProvider();
 
       firebase
         .auth()
         .signInWithPopup(provider)
-        .then(function(result) {
+        .then(function (result) {
           // This gives you a Google Access Token. You can use it to access the Google API.
           var token = result.credential.accessToken;
           // The signed-in user info.
           var user = result.user;
           // ...
         })
-        .then(function() {
+        .then(function () {
           $("#content")[0].load("Resturant_manu.html");
         })
-        .catch(function(error) {
+        .catch(function (error) {
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
@@ -207,7 +204,7 @@ document.addEventListener('init', function (event) {
           // ...
         });
     });
-    
+
 
     $("#backhomebtn").click(function () {
       $("#content")[0].load("home.html");
@@ -215,4 +212,3 @@ document.addEventListener('init', function (event) {
   }
 });
 
-  
