@@ -126,17 +126,37 @@ document.addEventListener('init', function (event) {
         <p class="resname">${doc.data().resname}</p>
       <p class="resrating">${doc.data().rating}<ons-icon icon="fa-star"></ons-icon></p>
         <p class="opentime">เปิด 24.00-23.59</p>
-</ons-card>
-<ons-card class="list">
+</ons-card>`;
+        $("#menu").append(item);
+
+        doc.data().menu.forEach(element => {
+
+          var item = `<ons-card class="list">
     <div class="left" style="width:50%">
-       <a class="listmenu">ขนมครก</a> 
+       <a class="listmenu">${element.list}</a> 
     </div>
     <div class="right" style="width: 50%;">
-       <a class="price">10฿</a> 
+       <a class="price">${element.price}</a> 
     </div>
-</ons-card>`;
+</ons-card>`
+          $("#list").append(item);
 
-        $("#menu").append(item);
+        });
+
+        doc.data().topping.forEach(element => {
+
+          var item = `<ons-card class="list">
+    <div class="left" style="width:50%">
+       <a class="listmenu">${element.type}</a> 
+    </div>
+    <div class="right" style="width: 50%;">
+       <a class="price">${element.price}</a> 
+    </div>
+</ons-card>`
+          $("#list").append(item);
+        });
+
+
       });
     });
   }
