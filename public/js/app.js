@@ -125,7 +125,8 @@ document.addEventListener('init', function (event) {
         var item = `<ons-card class="resdetail">
         <p class="resname">${doc.data().resname}</p>
       <p class="resrating">${doc.data().rating}<ons-icon icon="fa-star"></ons-icon></p>
-        <p class="opentime">เปิด 24.00-23.59</p>
+        <p class="opentime">${doc.data().time}</p>
+        <p class="tel">${doc.data().tel}</p>
 </ons-card>`;
         $("#menu").append(item);
 
