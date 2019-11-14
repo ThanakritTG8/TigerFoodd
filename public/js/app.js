@@ -17,7 +17,7 @@ var db = firebase.firestore();
 
 function restaurent(id) {
   localStorage.setItem("selectedrestaurent", id);
-  $("#myNavigator")[0].pushPage("restaurentMenu.html");
+  $("#myNavigator")[0].pushPage("listMenu.html");
 }
 
 document.addEventListener('init', function (event) {
@@ -100,7 +100,7 @@ document.addEventListener('init', function (event) {
                     src="${doc.data().resUrl}"
                     alt="" id="${doc.data().resid}">
             </div>
-            <div class="center" style="width:40%; margin-top:30px">
+            <div class="center" style="width:40%; margin-top:30px; ">
                 <a class="text">${doc.data().resname}</a>
             </div>
             <div class="right" style="width:30%; margin-top:30px">
@@ -122,39 +122,43 @@ document.addEventListener('init', function (event) {
     var resid = localStorage.getItem("selectedrestaurent");
     db.collection("restaurent").where("resid", "==", resid).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        var item = `<ons-card class="resdetail">
+        var item = `<ons-card class="resdetail" >
         <p class="resname">${doc.data().resname}</p>
-      <p class="resrating">${doc.data().rating}<ons-icon icon="fa-star"></ons-icon></p>
+      <p class="resrating">rating : ${doc.data().rating}<ons-icon icon="fa-star"></ons-icon></p>
         <p class="opentime">${doc.data().time}</p>
         <p class="tel">${doc.data().tel}</p>
-</ons-card>`;
+        </ons-card>`;
         $("#menu").append(item);
 
         doc.data().menu.forEach(element => {
 
-          var item = `<ons-card class="list">
-    <div class="left" style="width:50%">
-       <a class="listmenu">${element.list}</a> 
-    </div>
-    <div class="right" style="width: 50%;">
-       <a class="price">${element.price}</a> 
-    </div>
-</ons-card>`
+          var item = `<ons-card class="list" onclick="ons.notification.toast('Hi there!', { timeout: 1000, animation: 'fade' })">
+          <ons-row>
+              <div class="left" style="width:50%">
+                  <a class="listmenu">${element.list}</a>
+              </div>
+              <div class="right" style="width: 50%;">
+                  <a class="price">${element.price}฿</a>
+              </div>
+          </ons-row>
+      </ons-card>`;
           $("#list").append(item);
 
         });
 
         doc.data().topping.forEach(element => {
 
-          var item = `<ons-card class="list">
-    <div class="left" style="width:50%">
-       <a class="listmenu">${element.type}</a> 
-    </div>
-    <div class="right" style="width: 50%;">
-       <a class="price">${element.price}</a> 
-    </div>
-</ons-card>`
-          $("#list").append(item);
+          var item = `<ons-card class="list" onclick="ons.notification.toast('Hi there!', { timeout: 1000, animation: 'fall' })">
+            <ons-row>
+                <div class="left" style="width:50%">
+                    <a class="listmenu">${element.type}</a>
+                </div>
+                <div class="right" style="width: 50%;">
+                    <a class="price">${element.price}฿</a>
+                </div>
+            </ons-row>
+        </ons-card>`
+          $("#topping").append(item);
         });
 
 

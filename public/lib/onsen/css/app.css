@@ -129,3 +129,10 @@ ul {
   .resrating{
     width: 40%;
   }
+  .price{
+    margin-left:120px ;
+  }
+  .menuhead{
+    font-weight: bold;
+    text-align: center;
+  }
