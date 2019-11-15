@@ -15,17 +15,85 @@ firebase.initializeApp(firebaseConfig);
 //Use firestore
 var db = firebase.firestore();
 
+// function
 function restaurent(id) {
   localStorage.setItem("selectedrestaurent", id);
   $("#myNavigator")[0].pushPage("listMenu.html");
 }
 
+var rid = [];
+var rname = [];
+var rlist = [];
+var prices = [];
+var rprice = parseInt(0);
+function addtocart(id, name, list, price) {
+  price = parseInt(price);
+  prices.push(price);
+
+  localStorage.setItem("setid", id);
+  localStorage.setItem("setname", name);
+  localStorage.setItem("setlist", list);
+
+  var setId = localStorage.getItem("setid");
+  var setName = localStorage.getItem("setname");
+  var setList = localStorage.getItem("setlist");
+
+  rprice = prices + parseInt(price);
+  console.log(
+    "ID หลัก: " +
+    setName +
+    " " +
+    "id: " +
+    setId +
+    "menu: " +
+    " " +
+    setList +
+    " " +
+    "price : " +
+    price +
+    " " +
+    "sum: " +
+    prices
+  );
+  const array_order = [id];
+  for (let i = 0; i < array_order.length; i++) {
+    rlist.push(setList);
+    rname.push(setName);
+  }
+
+}
+
+
+//page
 document.addEventListener('init', function (event) {
   var page = event.target;
+
+  if (page.id === 'menuPage') {
+    console.log("menuPage");
+
+    $("#login").click(function () {
+      $("#content")[0].load("login.html");
+      $("#sidemenu")[0].close();
+    });
+
+    $("#logout").click(function () {
+      $("#content")[0].load("home.html");
+      $("#sidemenu")[0].close();
+    });
+
+    $("#home").click(function () {
+      $("#content")[0].load("home.html");
+      $("#sidemenu")[0].close();
+    });
+  }
 
 
   if (page.id === 'homePage') {
     console.log("homePage");
+
+    $("#menubtn").click(function () {
+      $("#sidemenu")[0].open();
+    });
 
     //homepage
     $("#dessert").click(function () {
@@ -87,6 +155,9 @@ document.addEventListener('init', function (event) {
   if (page.id === 'categoryPage') {
     console.log();
 
+    $("#menubtn").click(function () {
+      $("#sidemenu")[0].open();
+    });
 
     $("#restaurent_recommended").empty();
     var category = localStorage.getItem("selectedCategory");
@@ -118,6 +189,11 @@ document.addEventListener('init', function (event) {
   }
 
   if (page.id === 'listmenu') {
+
+    $("#menubtn").click(function () {
+      $("#sidemenu")[0].open();
+    });
+
     $("#menu").empty();
     var resid = localStorage.getItem("selectedrestaurent");
     db.collection("restaurent").where("resid", "==", resid).get().then((querySnapshot) => {
@@ -132,7 +208,9 @@ document.addEventListener('init', function (event) {
 
         doc.data().menu.forEach(element => {
 
-          var item = `<ons-card class="list" onclick="ons.notification.toast('Hi there!', { timeout: 1000, animation: 'fade' })">
+          var item = `<ons-card class="list" 
+          onclick="ons.notification.toast('Hi there!', { timeout: 1000, animation: 'fade' }); 
+          addtocart(${doc.data().resid},'${doc.data().resname}', '${element.list}', ${element.price});">
           <ons-row>
               <div class="left" style="width:50%">
                   <a class="listmenu">${element.list}</a>
@@ -148,7 +226,9 @@ document.addEventListener('init', function (event) {
 
         doc.data().topping.forEach(element => {
 
-          var item = `<ons-card class="list" onclick="ons.notification.toast('Hi there!', { timeout: 1000, animation: 'fall' })">
+          var item = `<ons-card class="list" 
+          onclick="ons.notification.toast('Hi there!', { timeout: 1000, animation: 'fall' }); 
+          addtocart(${doc.data().resid}, '${doc.data().resname}', '${element.type}', ${element.price});">
             <ons-row>
                 <div class="left" style="width:50%">
                     <a class="listmenu">${element.type}</a>
@@ -166,13 +246,47 @@ document.addEventListener('init', function (event) {
     });
   }
 
+
+
   if (page.id === 'profilePage') {
     console.log("profile");
+
+    $("#menubtn").click(function () {
+      $("#sidemenu")[0].open();
+    });
 
     $(".logout1").click(function () {
       $("#content")[0].load("login.html");
     });
   }
+
+
+
+  if (page.id === 'cartPage') {
+    console.log("cart");
+
+    $("#menubtn").click(function () {
+      $("#sidemenu")[0].open();
+    });
+
+  //   $("#cartlist").empty();
+  //  for (var i = 0; i < rlist.length; i++) {
+     console.log(setList);
+  
+  //    var list = `<ons-list-item>
+    
+  //    <div class="center">
+  //        <div class="listmenu">`+ rlist[i]+ `</div>
+  //    </div>
+  //    <div class="right">
+  //        <div class="pricemenu">`+ prices[i]+`</div>
+  //    </div>
+  // </ons-list-item>`;
+  
+  // $("#cartlist").append(list);
+  //  }
+  }
+
 
   if (page.id === 'loginPage') {
     console.log("loginPage");

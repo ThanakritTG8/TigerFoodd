@@ -25,11 +25,9 @@
   <template id="splitter.html">
     <ons-page>
       <ons-splitter id="mySplitter">
-        <!-- <ons-splitter-side id="sidemenu" page="menu.html" swipeable width="250px" collapse swipe-target-width="50px">
-        </ons-splitter-side> -->
-        <!-- <ons-splitter-content page="home.html" id="content">
-        </ons-splitter-content> -->
-        <ons-splitter-content page="tabbar.html" id="content">
+        <ons-splitter-side id="sidemenu" page="menu.html" swipeable width="250px" collapse swipe-target-width="50px">
+        </ons-splitter-side>
+        <ons-splitter-content page="home.html" id="content">
         </ons-splitter-content>
       </ons-splitter>
     </ons-page>
@@ -46,20 +44,6 @@
           </div>
         </div>
       </ons-toolbar>
-      <ons-tabbar swipeable position="auto" style=" background-color:black; ">
-        <ons-tab page="home.html" label="" style=" background-color:black;" active>
-          <ons-icon class="icon" icon="fa-home, material:md-home" style="color:#FFCC33"></ons-icon>
-        </ons-tab>
-        <ons-tab page="profile.html" label="" style=" background-color:black;">
-          <ons-icon class="icon" icon="fa-compass, material:md-compass" style="color:#FFCC33;"></ons-icon>
-        </ons-tab>
-        <ons-tab page="cart.html" label="" style=" background-color:black;">
-          <ons-icon class="icon" icon="fa-store, material:md-store" style="color:#FFCC33;"></ons-icon>
-        </ons-tab>
-        <ons-tab page="profile.html" label="" style=" background-color:black;">
-          <ons-icon class="icon" icon="fa-user-circle, material:md-user" style="color:#FFCC33;"></ons-icon>
-        </ons-tab>
-      </ons-tabbar>
     </ons-page>
   </template>
 
