@@ -15,6 +15,9 @@ firebase.initializeApp(firebaseConfig);
 //Use firestore
 var db = firebase.firestore();
 
+var select_locationmap_lat = 'Please Select' ;
+var select_locationmap_lng = 'Please Select' ;
+
 // function
 function restaurent(id) {
   localStorage.setItem("selectedrestaurent", id);
@@ -27,8 +30,8 @@ var rlist = [];
 var prices = [];
 var rprice = parseInt(0);
 function addtocart(id, name, list, price) {
-  price = parseInt(price);
-  prices.push(price);
+  rprice = parseInt(price);
+  prices.push(rprice);
 
   localStorage.setItem("setid", id);
   localStorage.setItem("setname", name);
@@ -60,6 +63,11 @@ function addtocart(id, name, list, price) {
     rlist.push(setList);
     rname.push(setName);
   }
+  
+  // for (let i = 0; i < prices.length; i++) {
+  //   const element = array[i];
+    
+  // }
 
 }
 
@@ -78,6 +86,11 @@ document.addEventListener('init', function (event) {
 
     $("#cart").click(function () {
       $("#content")[0].load("cart.html");
+      $("#sidemenu")[0].close();
+    });
+
+    $("#map").click(function () {
+      $("#content")[0].load("map.html");
       $("#sidemenu")[0].close();
     });
 
@@ -160,7 +173,7 @@ document.addEventListener('init', function (event) {
   if (page.id === 'categoryPage') {
     console.log();
 
-   
+
 
     $("#restaurent_recommended").empty();
     var category = localStorage.getItem("selectedCategory");
@@ -247,7 +260,51 @@ document.addEventListener('init', function (event) {
   }
 
 
+//map
+if (page.id === 'mapPage') {
 
+  var onSuccess = function(position) {
+    lat = position.coords.latitude;
+    lng = position.coords.longitude;
+
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoidGdyb2NrMTk5NyIsImEiOiJjazJsYXhiNmcwNTdxM2NscDU3M2tndzJrIn0.PpwD7OtiZwmYpr-kQuJv6A";
+    var map = new mapboxgl.Map({
+      container: "map", // container id
+      style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+      center: [lng, lat], // starting position [lng, lat]
+      zoom: 14 // starting zoom
+    });
+
+    var marker = new mapboxgl.Marker({
+      draggable: true
+    })
+      .setLngLat([lng, lat])
+      .addTo(map);
+
+    function onDragEnd() {
+      var lngLat = marker.getLngLat();
+      select_locationmap_lat = lngLat.lat;
+      select_locationmap_lng = lngLat.lng;
+      coordinates.style.display = "block";
+      coordinates.innerHTML =
+        "Longitude: " + lngLat.lng + "<br />Latitude: " + lngLat.lat;
+
+      localStorage.setItem("LLat", select_locationmap_lat);
+      localStorage.setItem("Lng", select_locationmap_lng);
+    }
+
+    marker.on("dragend", onDragEnd);
+  };
+
+  function onError(error) {
+    alert("code: " + error.code + "\n" + "message: " + error.message + "\n");
+  }
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+}
+
+
+// profile----------------------------
   if (page.id === 'profilePage') {
     console.log("profile");
 
@@ -271,20 +328,37 @@ document.addEventListener('init', function (event) {
     });
 
     $("#cartlist").empty();
-   for (var i = 0; i < rlist.length; i++) {
-     
-     var list = `<ons-list-item>
+    for (var i = 0; i < rlist.length; i++) {
+
+      var list = `<ons-list-item>
     
      <div class="center">
-         <div class="listmenu">`+ rlist[i]+ `</div>
+         <div class="listmenu">`+ rlist[i] + `</div>
      </div>
      <div class="right">
-         <div class="pricemenu">`+ prices[i]+`</div>
+         <div class="pricemenu">`+ prices[i] + `</div>
      </div>
   </ons-list-item>`;
-  
-  $("#cartlist").append(list);
-   }
+
+      $("#cartlist").append(list);
+    }
+
+  let sum = 0;
+
+  for (let i = 0; i < prices.length; i++) {
+    sum += prices[i];
+  }
+  console.log(sum);
+    var result = ` <ons-list-item>
+   <div class="left">
+       Total
+   </div>
+   <div class="right">
+       `+ sum +`
+   </div>
+</ons-list-item>`;
+
+$("#sum").append(result);
   }
 
 
