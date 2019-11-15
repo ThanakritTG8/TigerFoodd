@@ -71,18 +71,23 @@ document.addEventListener('init', function (event) {
   if (page.id === 'menuPage') {
     console.log("menuPage");
 
+    $("#home").click(function () {
+      $("#content")[0].load("home.html");
+      $("#sidemenu")[0].close();
+    });
+
+    $("#cart").click(function () {
+      $("#content")[0].load("cart.html");
+      $("#sidemenu")[0].close();
+    });
+
     $("#login").click(function () {
       $("#content")[0].load("login.html");
       $("#sidemenu")[0].close();
     });
 
-    $("#logout").click(function () {
-      $("#content")[0].load("home.html");
-      $("#sidemenu")[0].close();
-    });
-
-    $("#home").click(function () {
-      $("#content")[0].load("home.html");
+    $("#setting").click(function () {
+      $("#content")[0].load("profile.html");
       $("#sidemenu")[0].close();
     });
   }
@@ -155,9 +160,7 @@ document.addEventListener('init', function (event) {
   if (page.id === 'categoryPage') {
     console.log();
 
-    $("#menubtn").click(function () {
-      $("#sidemenu")[0].open();
-    });
+   
 
     $("#restaurent_recommended").empty();
     var category = localStorage.getItem("selectedCategory");
@@ -190,9 +193,6 @@ document.addEventListener('init', function (event) {
 
   if (page.id === 'listmenu') {
 
-    $("#menubtn").click(function () {
-      $("#sidemenu")[0].open();
-    });
 
     $("#menu").empty();
     var resid = localStorage.getItem("selectedrestaurent");
@@ -251,9 +251,6 @@ document.addEventListener('init', function (event) {
   if (page.id === 'profilePage') {
     console.log("profile");
 
-    $("#menubtn").click(function () {
-      $("#sidemenu")[0].open();
-    });
 
     $(".logout1").click(function () {
       $("#content")[0].load("login.html");
@@ -269,22 +266,25 @@ document.addEventListener('init', function (event) {
       $("#sidemenu")[0].open();
     });
 
-  //   $("#cartlist").empty();
-  //  for (var i = 0; i < rlist.length; i++) {
-     console.log(setList);
-  
-  //    var list = `<ons-list-item>
+    $("#menubtn").click(function () {
+      $("#sidemenu")[0].open();
+    });
+
+    $("#cartlist").empty();
+   for (var i = 0; i < rlist.length; i++) {
+     
+     var list = `<ons-list-item>
     
-  //    <div class="center">
-  //        <div class="listmenu">`+ rlist[i]+ `</div>
-  //    </div>
-  //    <div class="right">
-  //        <div class="pricemenu">`+ prices[i]+`</div>
-  //    </div>
-  // </ons-list-item>`;
+     <div class="center">
+         <div class="listmenu">`+ rlist[i]+ `</div>
+     </div>
+     <div class="right">
+         <div class="pricemenu">`+ prices[i]+`</div>
+     </div>
+  </ons-list-item>`;
   
-  // $("#cartlist").append(list);
-  //  }
+  $("#cartlist").append(list);
+   }
   }
 
 
